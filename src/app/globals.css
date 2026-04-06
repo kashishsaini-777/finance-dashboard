@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 :root {
   --background: 0 0% 100%;
@@ -76,7 +76,7 @@
 }
 
 /* Smooth theme transition — applies to background and border only to avoid slowing hover effects */
-*, *::before, *::after {
+/* *, *::before, *::after {
   transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
@@ -88,7 +88,7 @@ body {
 }
 
 /* Scrollbar styling */
-::-webkit-scrollbar {
+/*::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
@@ -101,4 +101,177 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground));
+} */
+
+
+@import "tailwindcss";
+
+/* ================= ROOT THEME ================= */
+:root {
+  --background: 220 20% 98%;
+  --foreground: 222 47% 11%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+
+  --primary: 221 83% 53%;
+  --primary-foreground: 210 40% 98%;
+
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
+
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 46%;
+
+  --accent: 210 40% 94%;
+  --accent-foreground: 222 47% 11%;
+
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 221 83% 53%;
+
+  --radius: 0.75rem;
+}
+
+/* ================= DARK MODE ================= */
+.dark {
+  --background: 222 47% 7%;
+  --foreground: 210 40% 98%;
+
+  --card: 222 47% 10%;
+  --card-foreground: 210 40% 98%;
+
+  --primary: 217 91% 60%;
+  --secondary: 217 33% 18%;
+
+  --muted: 217 33% 18%;
+  --muted-foreground: 215 20% 65%;
+
+  --accent: 217 33% 18%;
+
+  --border: 217 33% 20%;
+  --input: 217 33% 20%;
+  --ring: 224 76% 48%;
+}
+
+/* ================= GLOBAL ================= */
+* {
+  border-color: hsl(var(--border));
+  box-sizing: border-box;
+}
+
+/* Smooth UI transitions */
+*, *::before, *::after {
+  transition: all 0.2s ease-in-out;
+}
+
+/* ================= BODY ================= */
+body {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--background)) 0%,
+    hsl(var(--secondary)) 100%
+  );
+  color: hsl(var(--foreground));
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+}
+
+/* ================= GLASS CARD ================= */
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(14px);
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+}
+
+.dark .glass {
+  background: rgba(30, 30, 30, 0.5);
+}
+
+/* ================= CARD IMPROVEMENT ================= */
+.card {
+  background: hsl(var(--card));
+  border-radius: var(--radius);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  padding: 1rem;
+}
+
+.dark .card {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* ================= BUTTON ================= */
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary)),
+    hsl(260 80% 60%)
+  );
+  color: hsl(var(--primary-foreground));
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ================= INPUT ================= */
+.input {
+  background: hsl(var(--input));
+  border: 1px solid hsl(var(--border));
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+}
+
+.input:focus {
+  outline: none;
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.3);
+}
+
+/* ================= SCROLLBAR ================= */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--primary)),
+    hsl(var(--accent))
+  );
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+}
+
+/* ================= HOVER EFFECTS ================= */
+.hover-scale {
+  transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+/* ================= FADE ANIMATION ================= */
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
